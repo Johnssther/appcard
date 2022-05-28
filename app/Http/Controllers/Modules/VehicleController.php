@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Modules;
 
 use App\Http\Controllers\Controller;
-use App\Models\Modules\Seller;
+use App\Models\Modules\Vehicle;
 use Illuminate\Http\Request;
 use DB, Log;
 
-class SellerController extends Controller
+class VehicleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $sellers = Seller::get();
-        return view('modules.sellers.index', ['sellers' => $sellers]);
+        $vehicles = Vehicle::get();
+        return view('modules.vehicles.index', ['vehicles' => $vehicles]);
     }
 
     /**
@@ -27,7 +27,7 @@ class SellerController extends Controller
      */
     public function create()
     {
-        return view('modules.sellers.create');
+        return view('modules.vehicles.create');
     }
 
     /**
@@ -39,14 +39,14 @@ class SellerController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $sellers = new Seller;
-        if ($sellers->isValid($request, $data)) {
+        $vehicles = new Vehicle;
+        if ($vehicles->isValid($request, $data)) {
             DB::beginTransaction();
             try {
-                $sellers->fill($data);
-                $sellers->save();
+                $vehicles->fill($data);
+                $vehicles->save();
                 DB::commit();
-                return redirect()->route('sellers.index');
+                return redirect()->route('vehicles.index');
 
             } catch (\Exception $e) {
                 DB::rollback();
@@ -60,21 +60,21 @@ class SellerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Modules\Seller  $seller
+     * @param  \App\Models\Modules\Vehicle  $vehicles
      * @return \Illuminate\Http\Response
      */
-    public function show(Seller $seller)
+    public function show(Vehicle $vehicle)
     {
-        return view('modules.sellers.show', ['seller' => $seller]);
+        return view('modules.vehicles.show', ['vehicle' => $vehicle]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Modules\Seller  $seller
+     * @param  \App\Models\Modules\Vehicle  $seller
      * @return \Illuminate\Http\Response
      */
-    public function edit(Seller $seller)
+    public function edit(Vehicle $vehicle)
     {
         //
     }
@@ -83,10 +83,10 @@ class SellerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Modules\Seller  $seller
+     * @param  \App\Models\Modules\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seller $seller)
+    public function update(Request $request, Vehicle $vehicle)
     {
         //
     }
@@ -94,10 +94,10 @@ class SellerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Modules\Seller  $seller
+     * @param  \App\Models\Modules\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Seller $seller)
+    public function destroy(Vehicle $vehicle)
     {
         //
     }

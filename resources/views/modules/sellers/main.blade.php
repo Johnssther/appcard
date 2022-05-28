@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('customers.store') }}">
+<form method="POST" action="{{ route('sellers.store') }}">
     @csrf
     <div class="row mb-3">
         <label class="col-sm-2 col-form-label" for="name">Nombre</label>
@@ -45,8 +45,26 @@
         <label class="col-sm-2 col-form-label" for="direction">Dirección</label>
         <div class="col-sm-10">
             <input type="text" name="direction" id="direction" class="form-control phone-mask"
-                placeholder="658 799 8941" aria-label="658 799 8941" aria-describedby="direction" />
+                placeholder="cll 10 #..." aria-label="658 799 8941" aria-describedby="direction" />
             @error('telephone')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="company">Compañia</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="company" id="company" placeholder="Doe." />
+            @error('company')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="identification_card">Cédula</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="identification_card" id="identification_card" placeholder="1099..." />
+            @error('identification_card')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Modules;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -45,28 +45,32 @@ class Customer extends Model
     ];
 
     /**
+     * Get Customers
+    */
+    public static function getCustomers()
+    {
+        $query = self::query();
+        $query->orderby('name', 'asc');
+        $collection = $query->pluck('name', 'id');
+
+        $collection->prepend('', '');
+        return $collection;
+    }
+
+    /**
      * Function for validate data.
      */
-    public function isValid($data)
+    public function isValid($request, $data)
     {
         $rules = [
             'name' => 'required',
             'surname' => 'required',
-            "telephone" => "required",
-            "direction" => "required",
-            "email" => "required",
+            'telephone' => 'required',
+            'direction' => 'required',
+            'email' => 'required',
         ];
-
-        if ($this->exists) {
-            $data['nit'] .= ",nit,{$this->id}";
-        }
-
-        $validator = Validator::make($data, $rules);
-        if ($validator->passes()) {
-            return true;
-        }
-        $this->errors = $validator->errors();
-        return false;
+        $request->validate($rules);
+        return true;
     }
 
     /**

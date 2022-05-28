@@ -25,3 +25,5 @@ require __DIR__.'/auth.php';
 
 Route::resource('customers', App\Http\Controllers\Modules\CustomerController::class);
 Route::resource('sellers', App\Http\Controllers\Modules\SellerController::class);
+Route::resource('vehicles', App\Http\Controllers\Modules\VehicleController::class);
+Route::resource('sales', App\Http\Controllers\Modules\SaleController::class);

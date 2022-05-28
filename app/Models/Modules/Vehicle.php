@@ -5,7 +5,7 @@ namespace App\Models\Modules;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Seller extends Model
+class Vehicle extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class Seller extends Model
      *
      * @var string
      */
-    protected $table = 'sellers';
+    protected $table = 'vehicles';
 
     /**
      * The attributes that are mass assignable.
@@ -23,9 +23,9 @@ class Seller extends Model
      * @var array
      */
     protected $fillable = [
-        'name','surname','telephone','direction','email','company','identification_card',
+        'model', 'maximum_power', 'maximum_torque', 'fuel_type', 'color', 'brand', 'value', 
     ];
-
+    
     /**
      * The attributes that are mass boolean assignable.
      *
@@ -45,14 +45,13 @@ class Seller extends Model
     ];
 
     /**
-     * Get Sellers
+    * Get Vehicles
     */
-    public static function getSellers()
+    public static function getVehicles()
     {
         $query = self::query();
-        $query->where('active', true);
-        $query->orderby('name', 'asc');
-        $collection = $query->pluck('name', 'id');
+        $query->orderby('model', 'asc');
+        $collection = $query->pluck('model', 'id');
 
         $collection->prepend('', '');
         return $collection;
@@ -64,16 +63,14 @@ class Seller extends Model
     public function isValid($request, $data)
     {
         $rules = [
-            'name' => 'required',
-            'surname' => 'required',
-            'telephone' => 'required',
-            'direction' => 'required',
-            'email' => 'required',
-            'company' => 'required',
-            'identification_card' => 'required',
+            'model' => 'required',
+            'maximum_power' => 'required',
+            'maximum_torque' => 'required',
+            'fuel_type' => 'required',
+            'color' => 'required',
+            'brand' => 'required',
         ];
         $request->validate($rules);
         return true;
     }
 }
-            

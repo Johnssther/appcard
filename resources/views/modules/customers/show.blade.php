@@ -10,7 +10,7 @@
 
         <a href="{{ route('customers.index') }}" class="btn btn-dark btn-sm text-white">Clientes</a>
         <a href="{{ route('customers.create') }}" class="btn btn-dark btn-sm text-white"><i class="bi bi-plus-lg"></i> Nuevo</a>
-        <a href="{{ route('customers.index') }}" class="btn btn-dark btn-sm text-white"><i class="bi bi-pencil"></i> Editar</a>
+        {{-- <a href="{{ route('customers.index') }}" class="btn btn-dark btn-sm text-white"><i class="bi bi-pencil"></i> Editar</a> --}}
         <hr>
         <div class="card">
             <h5 class="card-header">Cliente</h5>
@@ -34,7 +34,7 @@
                         <p><span class="text-muted fw-light">Dirección:</span> {{ $customer->direction }}</p>
                     </div>
                     <div class="col-md-4">
-                        <p><span class="text-muted fw-light">Email:</span> {{ $customer->mail }}</p>
+                        <p><span class="text-muted fw-light">Email:</span> {{ $customer->email }}</p>
                     </div>
                 </div>
             </div>

@@ -85,19 +85,24 @@
                 </a>
   
                 <ul class="menu-sub">
-                  <li class="menu-item active">
+                  <li class="menu-item {{ Request::segment(1) == 'customers' ? 'active' : '' }}">
                     <a href="{{ route('customers.index') }}" class="menu-link">
-                      <div data-i18n="Without menu">Clientes</div>
+                      <div>Clientes</div>
                     </a>
                   </li>
-                  <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                      <div data-i18n="Without navbar">Vendedores</div>
+                  <li class="menu-item {{ Request::segment(1) == 'sellers' ? 'active' : '' }}">
+                    <a href="{{ route('sellers.index') }}" class="menu-link">
+                      <div>Vendedores</div>
                     </a>
                   </li>
-                  <li class="menu-item">
-                    <a href="layouts-container.html" class="menu-link">
-                      <div data-i18n="Container">Vehículos</div>
+                  <li class="menu-item {{ Request::segment(1) == 'vehicles' ? 'active' : '' }}">
+                    <a href="{{ route('vehicles.index') }}" class="menu-link">
+                      <div>Vehículos</div>
+                    </a>
+                  </li>
+                  <li class="menu-item {{ Request::segment(1) == 'sales' ? 'active' : '' }}">
+                    <a href="{{ route('sales.index') }}" class="menu-link">
+                      <div>Ventas</div>
                     </a>
                   </li>
                 </ul>

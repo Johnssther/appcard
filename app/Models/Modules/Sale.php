@@ -5,7 +5,7 @@ namespace App\Models\Modules;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Seller extends Model
+class Sale extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class Seller extends Model
      *
      * @var string
      */
-    protected $table = 'sellers';
+    protected $table = 'sales';
 
     /**
      * The attributes that are mass assignable.
@@ -23,7 +23,7 @@ class Seller extends Model
      * @var array
      */
     protected $fillable = [
-        'name','surname','telephone','direction','email','company','identification_card',
+        'seller_id', 'customer_id', 'vehicle_id', 'name_customer', 'surname_customer', 'name_seller', 'surname_seller', 'comments',
     ];
 
     /**
@@ -45,35 +45,38 @@ class Seller extends Model
     ];
 
     /**
-     * Get Sellers
-    */
-    public static function getSellers()
-    {
-        $query = self::query();
-        $query->where('active', true);
-        $query->orderby('name', 'asc');
-        $collection = $query->pluck('name', 'id');
-
-        $collection->prepend('', '');
-        return $collection;
-    }
-
-    /**
      * Function for validate data.
      */
     public function isValid($request, $data)
     {
         $rules = [
-            'name' => 'required',
-            'surname' => 'required',
-            'telephone' => 'required',
-            'direction' => 'required',
-            'email' => 'required',
-            'company' => 'required',
-            'identification_card' => 'required',
+            'comments' => 'required',
         ];
         $request->validate($rules);
         return true;
     }
+
+    /**
+     *  Get all seller of the asignam
+     */
+    public function seller()
+    {
+        return $this->hasOne('App\Models\Modules\Seller', 'id', 'seller_id');
+    }
+
+    /**
+     *  Get all customer of the asignam
+     */
+    public function customer()
+    {
+        return $this->hasOne('App\Models\Modules\Customer', 'id', 'seller_id');
+    }
+
+    /**
+     *  Get all vehicle of the asignam
+     */
+    public function vehicle()
+    {
+        return $this->hasOne('App\Models\Modules\Vehicle', 'id', 'seller_id');
+    }
 }
-            

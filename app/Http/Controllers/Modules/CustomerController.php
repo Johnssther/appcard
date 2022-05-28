@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Modules;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Customer;
+use App\Models\Modules\Customer;
 use DB, Log;
 
 class CustomerController extends Controller
@@ -38,13 +38,11 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+       $data = $request->all();
         $customer = new Customer;
-        
-        if ($customer->isValid($data)) {
+        if ($customer->isValid($request, $data)) {
             DB::beginTransaction();
             try {
-
                 $customer->fill($data);
                 $customer->save();
                 DB::commit();
@@ -52,14 +50,11 @@ class CustomerController extends Controller
 
             } catch (\Exception $e) {
                 DB::rollback();
-                dd($e->getMessage());
                 Log::error($e->getMessage());
                 return response()->json(['success' => false, 'errors' => 'Ha ocurrido un error inesperado']);
             }
         }
-        return redirect('customers/create')->withErrors([
-            'name' => 'El campo nombre es obligatorio'
-        ]);
+        return abort(500);
     }
 
     /**
