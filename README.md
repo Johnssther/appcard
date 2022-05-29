@@ -24,9 +24,9 @@ Laravel 8
 
 # Vista previa
 ## Registro en la aplicación
-![](https://firebasestorage.googleapis.com/v0/b/coysafinance-1f247.appspot.com/o/files%2FCaptura%20de%20pantalla%20de%202022-05-29%2010-01-10.png?alt=media&token=9e76c674-28b8-4dbe-a2be-ee9833870e1f)
+![](https://firebasestorage.googleapis.com/v0/b/coysafinance-1f247.appspot.com/o/files%2FCaptura%20de%20pantalla%20de%202022-05-29%2010-13-49.png?alt=media&token=4b0503b3-b8e6-489b-8b98-4e9f0ae758dd)
 
-## Modulo clientes
+## Modulo vendedores
 ![](https://firebasestorage.googleapis.com/v0/b/coysafinance-1f247.appspot.com/o/files%2FCaptura%20de%20pantalla%20de%202022-05-29%2010-01-10.png?alt=media&token=9e76c674-28b8-4dbe-a2be-ee9833870e1f)
 
 ## Modulo ventas
