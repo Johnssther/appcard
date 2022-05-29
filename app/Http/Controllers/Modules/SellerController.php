@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Modules;
 use App\Http\Controllers\Controller;
 use App\Models\Modules\Seller;
 use Illuminate\Http\Request;
+use App\Exports\SellerExport;
+use Maatwebsite\Excel\Facades\Excel;
 use DB, Log;
 
 class SellerController extends Controller
@@ -101,5 +103,16 @@ class SellerController extends Controller
     public function destroy(Seller $seller)
     {
         //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Modules\Seller  $seller
+     * @return \Illuminate\Http\Response
+     */
+    public function export(Seller $seller)
+    {
+        return Excel::download(new SellerExport, 'sellers.xlsx');
     }
 }

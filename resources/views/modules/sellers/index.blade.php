@@ -9,8 +9,9 @@
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard /</span> Vendedores</h4>
 
         <a href="{{ route('sellers.create') }}" class="btn btn-dark btn-sm text-white"><i class="bi bi-plus-lg"></i> Nuevo</a>
-
+        <a href="{{ route('sellers.export') }}" class="btn btn-primary btn-sm"><i class="bi bi-file-excel-fill"></i> Generar reporte Excel</a>
         <hr>
+
         <div class="card">
             <h5 class="card-header">Listado de vendedores</h5>
             <div class="table-responsive text-nowrap">

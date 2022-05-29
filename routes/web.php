@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -23,7 +23,13 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('customers', App\Http\Controllers\Modules\CustomerController::class);
-Route::resource('sellers', App\Http\Controllers\Modules\SellerController::class);
-Route::resource('vehicles', App\Http\Controllers\Modules\VehicleController::class);
-Route::resource('sales', App\Http\Controllers\Modules\SaleController::class);
+Route::middleware('auth')->group(function () {
+    Route::resource('customers', App\Http\Controllers\Modules\CustomerController::class);
+    Route::group(['prefix' => 'sellers'], function () {
+        Route::get('export', [App\Http\Controllers\Modules\SellerController::class, 'export'])->name('sellers.export');
+    });
+    Route::resource('sellers', App\Http\Controllers\Modules\SellerController::class);
+    Route::resource('vehicles', App\Http\Controllers\Modules\VehicleController::class);
+    Route::resource('sales', App\Http\Controllers\Modules\SaleController::class);
+
+});

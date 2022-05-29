@@ -69,19 +69,11 @@
             <div class="menu-inner-shadow"></div>
   
             <ul class="menu-inner py-1">
-              <!-- Dashboard -->
-              <li class="menu-item">
-                <a href="index.html" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                  <div data-i18n="Analytics">Dashboard</div>
-                </a>
-              </li>
-  
               <!-- Layouts -->
               <li class="menu-item active open">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="bi bi-briefcase"></i>
-                  <div> Modulos</div>
+                  <div>&nbsp; Modulos</div>
                 </a>
   
                 <ul class="menu-sub">
