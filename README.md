@@ -20,7 +20,14 @@ Laravel 8
 ## Paso 1
     git clone https://github.com/Johnssther/appcard.git
 	composer install
+    php artisan migrate
 
 # Vista previa
+## Registro en la aplicación
 ![](https://firebasestorage.googleapis.com/v0/b/coysafinance-1f247.appspot.com/o/files%2FCaptura%20de%20pantalla%20de%202022-05-29%2010-01-10.png?alt=media&token=9e76c674-28b8-4dbe-a2be-ee9833870e1f)
+
+## Modulo clientes
+![](https://firebasestorage.googleapis.com/v0/b/coysafinance-1f247.appspot.com/o/files%2FCaptura%20de%20pantalla%20de%202022-05-29%2010-01-10.png?alt=media&token=9e76c674-28b8-4dbe-a2be-ee9833870e1f)
+
+## Modulo ventas
 ![](https://firebasestorage.googleapis.com/v0/b/coysafinance-1f247.appspot.com/o/files%2FCaptura%20de%20pantalla%20de%202022-05-29%2010-00-47.png?alt=media&token=95330f00-7482-4e69-b4bd-7b74164b89ba)
