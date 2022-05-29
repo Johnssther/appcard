@@ -65,6 +65,7 @@ class SellerController extends Controller
      */
     public function show(Seller $seller)
     {
+        $seller->load('sales.vehicle');
         return view('modules.sellers.show', ['seller' => $seller]);
     }
 

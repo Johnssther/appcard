@@ -75,5 +75,9 @@ class Seller extends Model
         $request->validate($rules);
         return true;
     }
+
+    public function sales()
+    {
+        return $this->hasMany('App\Models\Modules\Sale', 'seller_id', 'id');
+    }
 }
-            

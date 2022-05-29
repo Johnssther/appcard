@@ -46,6 +46,34 @@
                     </div>
                 </div>
             </div>
+            <h5 class="card-header">Ventas</h5>
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th>Codigo de la venta</th>
+                        <th>Cliente</th>
+                        <th>Vehiculo</th>
+                        <th>Valor</th>
+                        <th>Fecha de la venta</th>
+                        <th>Ver</th>
+                    </tr>
+                <tbody>
+                    @foreach ($seller->sales as $sale)
+                    <tr>
+                        <td>{{ $sale->id }}</td>
+                        <td>{{ $sale->name_customer }} {{ $sale->surname_customer }}</td>
+                        <td>{{ $sale->vehicle->model }} {{ $sale->vehicle->color }}</td>
+                        <td>$ {{ number_format($sale->vehicle->value, 2, '.', ',') }}</td>
+                        <td>{{ $sale->created_at }}</td>
+                        <td>
+                            <a href="{{ route('sales.show',$sale->id) }}">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
 
     </div>
